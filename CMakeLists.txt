@@ -3,6 +3,8 @@ project(nginx)
 
 set(CMAKE_C_STANDARD 99)
 
+set(CMAKE_C_FLAGS "-Wall -Werror")
+
 include_directories(obj)
 include_directories(src/core)
 include_directories(src/event)
