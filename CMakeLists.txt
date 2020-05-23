@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(nginx_core)
+project(nginx)
 
 set(CMAKE_C_STANDARD 99)
 
@@ -9,7 +9,7 @@ include_directories(src/event)
 include_directories(src/os/unix)
 include_directories(src/stream)
 
-add_executable(nginx_core
+add_executable(nginx
         obj/ngx_auto_config.h
         obj/ngx_auto_headers.h
         obj/ngx_modules.c
@@ -160,4 +160,4 @@ add_executable(nginx_core
         src/stream/ngx_stream_write_filter_module.c
         )
 
-target_link_libraries(nginx_core pthread dl)
+target_link_libraries(nginx pthread dl)
