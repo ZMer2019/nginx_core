@@ -7,6 +7,7 @@
 extern ngx_module_t  ngx_core_module;
 extern ngx_module_t  ngx_errlog_module;
 extern ngx_module_t  ngx_conf_module;
+extern ngx_module_t  ngx_openssl_module;
 extern ngx_module_t  ngx_events_module;
 extern ngx_module_t  ngx_event_core_module;
 extern ngx_module_t  ngx_epoll_module;
@@ -16,6 +17,7 @@ extern ngx_module_t  ngx_stream_log_module;
 extern ngx_module_t  ngx_stream_proxy_module;
 extern ngx_module_t  ngx_stream_upstream_module;
 extern ngx_module_t  ngx_stream_write_filter_module;
+extern ngx_module_t  ngx_stream_ssl_module;
 extern ngx_module_t  ngx_stream_limit_conn_module;
 extern ngx_module_t  ngx_stream_access_module;
 extern ngx_module_t  ngx_stream_geo_module;
@@ -31,6 +33,7 @@ ngx_module_t *ngx_modules[] = {
     &ngx_core_module,
     &ngx_errlog_module,
     &ngx_conf_module,
+    &ngx_openssl_module,
     &ngx_events_module,
     &ngx_event_core_module,
     &ngx_epoll_module,
@@ -40,6 +43,7 @@ ngx_module_t *ngx_modules[] = {
     &ngx_stream_proxy_module,
     &ngx_stream_upstream_module,
     &ngx_stream_write_filter_module,
+    &ngx_stream_ssl_module,
     &ngx_stream_limit_conn_module,
     &ngx_stream_access_module,
     &ngx_stream_geo_module,
@@ -57,6 +61,7 @@ char *ngx_module_names[] = {
     "ngx_core_module",
     "ngx_errlog_module",
     "ngx_conf_module",
+    "ngx_openssl_module",
     "ngx_events_module",
     "ngx_event_core_module",
     "ngx_epoll_module",
@@ -66,6 +71,7 @@ char *ngx_module_names[] = {
     "ngx_stream_proxy_module",
     "ngx_stream_upstream_module",
     "ngx_stream_write_filter_module",
+    "ngx_stream_ssl_module",
     "ngx_stream_limit_conn_module",
     "ngx_stream_access_module",
     "ngx_stream_geo_module",

@@ -1,10 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
-project(nginx)
+project(nginx C)
 
 set(CMAKE_C_STANDARD 99)
-
 set(CMAKE_C_FLAGS "-Wall -Werror")
-
 include_directories(obj)
 include_directories(src/core)
 include_directories(src/event)
@@ -23,9 +21,12 @@ add_executable(nginx
         src/core/ngx_buf.h
         src/core/ngx_conf_file.c
         src/core/ngx_conf_file.h
+        src/core/ngx_config.h
         src/core/ngx_connection.c
         src/core/ngx_connection.h
+        src/core/ngx_core.h
         src/core/ngx_cpuinfo.c
+        src/core/ngx_crc.h
         src/core/ngx_crc32.c
         src/core/ngx_crc32.h
         src/core/ngx_crypt.c
@@ -82,13 +83,15 @@ add_executable(nginx
         src/core/ngx_syslog.h
         src/core/ngx_times.c
         src/core/ngx_times.h
-        src/core/ngx_config.h
-        src/core/ngx_core.h
+        src/event/modules/ngx_epoll_module.c
         src/event/ngx_event.c
         src/event/ngx_event.h
         src/event/ngx_event_accept.c
         src/event/ngx_event_connect.c
         src/event/ngx_event_connect.h
+        src/event/ngx_event_openssl.c
+        src/event/ngx_event_openssl.h
+        src/event/ngx_event_openssl_stapling.c
         src/event/ngx_event_pipe.c
         src/event/ngx_event_pipe.h
         src/event/ngx_event_posted.c
@@ -96,9 +99,9 @@ add_executable(nginx
         src/event/ngx_event_timer.c
         src/event/ngx_event_timer.h
         src/event/ngx_event_udp.c
-        src/event/modules/ngx_epoll_module.c
         src/os/unix/ngx_alloc.c
         src/os/unix/ngx_alloc.h
+        src/os/unix/ngx_atomic.h
         src/os/unix/ngx_channel.c
         src/os/unix/ngx_channel.h
         src/os/unix/ngx_daemon.c
@@ -108,8 +111,11 @@ add_executable(nginx
         src/os/unix/ngx_errno.h
         src/os/unix/ngx_files.c
         src/os/unix/ngx_files.h
+        src/os/unix/ngx_linux.h
+        src/os/unix/ngx_linux_config.h
         src/os/unix/ngx_linux_init.c
         src/os/unix/ngx_linux_sendfile_chain.c
+        src/os/unix/ngx_os.h
         src/os/unix/ngx_posix_init.c
         src/os/unix/ngx_process.c
         src/os/unix/ngx_process.h
@@ -126,6 +132,7 @@ add_executable(nginx
         src/os/unix/ngx_shmem.h
         src/os/unix/ngx_socket.c
         src/os/unix/ngx_socket.h
+        src/os/unix/ngx_thread.h
         src/os/unix/ngx_time.c
         src/os/unix/ngx_time.h
         src/os/unix/ngx_udp_recv.c
@@ -134,7 +141,6 @@ add_executable(nginx
         src/os/unix/ngx_user.c
         src/os/unix/ngx_user.h
         src/os/unix/ngx_writev_chain.c
-        src/os/unix/ngx_linux_config.h
         src/stream/ngx_stream.c
         src/stream/ngx_stream.h
         src/stream/ngx_stream_access_module.c
@@ -149,6 +155,8 @@ add_executable(nginx
         src/stream/ngx_stream_script.c
         src/stream/ngx_stream_script.h
         src/stream/ngx_stream_split_clients_module.c
+        src/stream/ngx_stream_ssl_module.c
+        src/stream/ngx_stream_ssl_module.h
         src/stream/ngx_stream_upstream.c
         src/stream/ngx_stream_upstream.h
         src/stream/ngx_stream_upstream_hash_module.c
@@ -159,7 +167,6 @@ add_executable(nginx
         src/stream/ngx_stream_upstream_zone_module.c
         src/stream/ngx_stream_variables.c
         src/stream/ngx_stream_variables.h
-        src/stream/ngx_stream_write_filter_module.c
-        )
+        src/stream/ngx_stream_write_filter_module.c)
 
 target_link_libraries(nginx pthread dl)

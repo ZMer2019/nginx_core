@@ -1,4 +1,9 @@
-#define NGX_CONFIGURE " --without-http --with-stream"
+#define NGX_CONFIGURE " --without-http --with-stream --with-debug --with-stream_ssl_module"
+
+#ifndef NGX_DEBUG
+#define NGX_DEBUG  1
+#endif
+
 
 #ifndef NGX_COMPILER
 #define NGX_COMPILER  "gcc 9.3.0 (Ubuntu 9.3.0-10ubuntu2) "
@@ -358,8 +363,23 @@
 #endif
 
 
+#ifndef NGX_STREAM_SSL
+#define NGX_STREAM_SSL  1
+#endif
+
+
 #ifndef NGX_STREAM_UPSTREAM_ZONE
 #define NGX_STREAM_UPSTREAM_ZONE  1
+#endif
+
+
+#ifndef NGX_OPENSSL
+#define NGX_OPENSSL  1
+#endif
+
+
+#ifndef NGX_SSL
+#define NGX_SSL  1
 #endif
 
 
